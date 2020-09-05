@@ -18,20 +18,40 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
     <title>Work Day Scheduler</title>
   </head>
 
   <body>
     <header class="jumbotron">
       <h1 class="display-3">Work Day Scheduler</h1>
-      <p class="lead">A simple calendar app for scheduling your work day</p>
+      <p class="lead">"To accomplish great things, we must not only act but also dream. Not only plan but also believe."</p><p>-Anatole Frances</p>
       <p id="currentDay" class="lead"></p>
     </header>
     <div class="container">
-      <!-- Timeblocks go here -->
+      <!-- Calendar Timeblocks - 8 Hour Work weeek view -->
+      <div class="row" id="hr-1">
+        <div class="col-2 border border-left-0 border-dark" id="hour">Example Text</div>
+        <div class="col-8" id="task-description">Example Text</div>
+          <button type="button" class="btn btn-primary col-2" id="save">💾</button>
+      </div>
     </div>
 
+    <footer>
+      <div class="card text-center">
+        <div class="card-header">
+          Created to Create
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Homework assignment completed by Curtis Henderson</h5>
+          <p class="card-text">If you've found this app handy, check out my other projects on my portfolio!</p>
+          <a href="https://chender93.github.io/curtishenderson/" class="btn btn-primary">Click Here</a>
+        </div>
+        <div class="card-footer text-muted">
+          Created September, 2020
+        </div>
+      </div>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   </body>
