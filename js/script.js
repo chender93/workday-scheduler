@@ -1,7 +1,7 @@
 // GIVEN I am using a daily planner to create a schedule
 // WHEN I open the planner
 // THEN the current day is displayed at the top of the calendar
-var rightNow = (moment().format("LT"));
+var rightNow = (moment("ha z").format("LT"));
 var hourCheck = $(".taskD");
 var timeAttached = $(".taskT");
 $("#currentDay").text(moment().format("MMMM Do YYYY"));
@@ -20,14 +20,14 @@ $("#hour-8").text(moment(16, "ha z").format("LT"));
 // THEN each time block is color-coded to indicate whether it is in the past, present, or future
 for (var i = 0; i <= hourCheck.length; i++) {
     var currentHour = $(hourCheck[i]);
-    var clockedTime = $(timeAttached[i]);
+    var clockedTime = $(timeAttached[i]).text();
     //console.log(clockedTime);
     //console.log(rightNow);
 
-    if (clockedTime > rightNow) {
-        currentHour.addClass("table-success")
-    } else if(clockedTime === rightNow) {
-            currentHour.addClass("table-danger")
+    if (clockedTime === rightNow) {
+        currentHour.addClass("table-danger")
+    } else if(clockedTime < rightNow) {
+            currentHour.addClass("table-success")
         }
         else { 
             currentHour.addClass("table-secondary")
@@ -35,40 +35,9 @@ for (var i = 0; i <= hourCheck.length; i++) {
 };
 // WHEN I click into a time block
 // THEN I can enter an event
-$(".task-d").on("click", "div", function() {
-    var text = $(this)
-    .text()
-    .trim();
-    var taskInput = $("<textarea>")
-    .addClass("col-8")
-    .val(text);
-    $(this).replaceWith(taskInput);
-    taskInput.trigger("focus");
-});
 
-// $(".task-d").on("blur", "textarea", function() {
-//     var text = $(this)
-//     .val()
-//     .trim();
+//I need to assign the values in each row to it's corresponding hour
 
-//     var place = $(this)
-//     .closest(".task.d")
-//     .attr("id")
-//     .replace("hour-", "");
-
-//     var index = $(this)
-//     .closest(".task-d")
-//     .index();
-
-//     tasks[place][index].text = text;
-//     saveTasks();
-
-//     var newTask = $("<div>")
-//     .addClass("col-8")
-//     .text(text);
-
-//     $(this).replaceWith(newTask);
-//});
 // WHEN I click the save button for that time block
 // THEN the text for that event is saved in local storage
 var saveTasks = function() {
