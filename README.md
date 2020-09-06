@@ -1,6 +1,8 @@
 # Work Day Scheduler Starter Code
 This project was created as an assignment for the PennLPS Fullstack Bootcamp.
 
+![Scheduler Walkthrough](https://github.com/chender93/workday-scheduler/blob/master/images/Work%20Day%20Scheduler.gif)
+
 ## Objective
 I was asked to create a functioning work calendar that repsonds to the current time and allow the user to save tasks with local storage.
 ## Approach
