@@ -4,6 +4,7 @@
 var rightNow = (moment("ha z").format("LT"));
 var hourCheck = $(".taskD");
 var timeAttached = $(".taskT");
+var taskList = JSON.parse(localStorage.getItem("masterList")) || [];
 $("#currentDay").text(moment().format("MMMM Do YYYY"));
 // WHEN I scroll down
 // THEN I am presented with time blocks for standard business hours
@@ -35,20 +36,34 @@ for (var i = 0; i <= hourCheck.length; i++) {
 };
 // WHEN I click into a time block
 // THEN I can enter an event
-
-//I need to assign the values in each row to it's corresponding hour
-
 // WHEN I click the save button for that time block
 // THEN the text for that event is saved in local storage
-var saveTasks = function() {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-};
+$("#save").on("click", function(event){
+    event.preventDefault();
+
+    //I need to append the hour's id to the description
+    var taskAttach = $("#task-description")
+    .val()
+    .trim();
+
+    var taskId = $(this)
+    .closest("div")
+    .text();
+
+    console.log(taskId);
+    taskList.push({
+        text: taskAttach,
+        id: taskId
+        });
+
+    localStorage.setItem("masterList", JSON.stringify(taskList));
+});
 // WHEN I refresh the page
 // THEN the saved events persist
-var checkTasks = function() {
-    tasks = JSON.parse(localStorage.getItem("tasks"));
-
-    if(!tasks) {
-        tasks = {};
-    }
+function taskCheck() {
+    var savedTask = localStorage.getItem("text");
+    $(".taskD").each(function() {
+        var logTask = $(this);
+        $(this).text(savedTask);
+    })
 };
